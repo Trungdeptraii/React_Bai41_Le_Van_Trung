@@ -1,0 +1,28 @@
+.toast{
+    display: flex;
+    position: fixed;
+    top: 2%;
+    right: 2%;
+    width: 15%;
+    height: 100%;
+    gap: 15px;
+}
+.toast-item{
+    border-radius: 5px;
+    height: 55px;
+    width: 100%;
+    background-color: blueviolet;
+    padding: 10px 10px 15px 10px;
+    color: white;
+}
+@keyframes runtime{
+
+}
+.toast-header{
+    display: flex;
+    gap: 15px;
+}
+.toast-body{
+    padding: 10px;
+    font-size: 20px;
+}
