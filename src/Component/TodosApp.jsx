@@ -42,7 +42,7 @@ export default class TodosApp extends Component {
         toast.error(` Có lỗi xảy ra - Kiểm tra lại`)
       }
     }else{
-      toast.warning('Kiểm tra lại todo')
+      toast.warning('Bạn cần thêm công việc !!!')
     }
   }
   handleChange = (e)=>{
