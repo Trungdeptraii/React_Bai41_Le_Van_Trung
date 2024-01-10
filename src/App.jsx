@@ -97,6 +97,9 @@ export default class App extends Component {
       if(payLoad.status == 'added' && payLoad.data.type == 'delete'){
         this.id = payLoad.data.id;
       }
+      if(payLoad.status == 'removed'){
+        this.id = undefined;
+      }
     })
   }
   handleShowTodo(){
@@ -127,26 +130,28 @@ export default class App extends Component {
     }
   }
   handleClick = async() => {
-    const apiKey = sessionStorage.getItem("apiKey");
-    this.setState({...this.state, ["isLoading"]: true});
-    if(apiKey){
-      try {
-        let url = 'https://api-todo-ebon.vercel.app/api/v1/todos/'+ this.id;
-        const res = await fetch(url , {
-          method: 'DELETE',
-          headers: {
-            "X-Api-Key": apiKey,
+    if(this.id){
+      const apiKey = sessionStorage.getItem("apiKey");
+      this.setState({...this.state, ["isLoading"]: true});
+      if(apiKey){
+        try {
+          let url = 'https://api-todo-ebon.vercel.app/api/v1/todos/'+ this.id;
+          const res = await fetch(url , {
+            method: 'DELETE',
+            headers: {
+              "X-Api-Key": apiKey,
+            }
+          })
+          if(res.ok){
+            await this.getTodo()
+            toast.success(`Đã xóa thành công !!!`);
           }
-        })
-        if(res.ok){
-          await this.getTodo()
-          toast.success(`Đã xóa thành công !!!`);
+          else{
+            toast.warning(` Chưa xóa được công việc - Hãy thử lại`)
+          }
+        } catch (error) {
+          toast.error(` Có lỗi xảy ra - Kiểm tra lại`)
         }
-        else{
-          toast.warning(` Chưa xóa được công việc - Hãy thử lại`)
-        }
-      } catch (error) {
-        toast.error(` Có lỗi xảy ra - Kiểm tra lại`)
       }
     }
   }
