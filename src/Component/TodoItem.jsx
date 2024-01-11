@@ -76,7 +76,6 @@ export default class TodoItem extends Component {
                 },
                 body: JSON.stringify({todo: data.todo, isCompleted: data.isCompleted})
                 })
-                console.log('res', await res.json());
                 if(res.ok){
                     await this.App.getTodo();
                     toast.success(`Đã cập nhật thành công !!!`);
