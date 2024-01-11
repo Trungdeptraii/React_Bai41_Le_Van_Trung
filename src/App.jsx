@@ -62,7 +62,7 @@ export default class App extends Component {
     this.state = {
       showTodo: false,
       isLoading: true,
-      todoList: []
+      todoList: [],
     }
     this.idRemove = undefined;
   }
@@ -105,7 +105,7 @@ export default class App extends Component {
   handleShowTodo(){
     this.setState({...this.state, ["showTodo"]: true});
   }
-  async getTodo(){
+  async getTodo(check){
     const apiKey = sessionStorage.getItem("apiKey")
     if(apiKey){
       this.setState({...this.state, ["isLoading"]: true});
