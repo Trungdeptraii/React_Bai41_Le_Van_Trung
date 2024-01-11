@@ -98,7 +98,6 @@ export default class TodoItem extends Component {
         let todoList = this.props.App.state.todoList.listTodo;
         let {todoEdit} = this.state;
         let arrId = todoEdit.map(el=> el._id);
-        console.log(todoEdit);
         return (
             Array.isArray(todoList) && todoList.length ? todoList.map((el)=>{
                 return (
